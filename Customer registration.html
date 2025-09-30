@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration</title>
+    <style>
+  body { font-family: Arial, Helvetica, sans-serif; background:#bdd1e5; margin:0; padding:20px; display:flex; justify-content:center; }
+  .card { width:90%; max-width:520px; background:#f3ecec; padding:22px; box-shadow:0 6px 18px rgba(16, 16, 16, 0.06); border-radius:8px; }
+  h2 { margin-top:1; }
+  .row { display:flex; gap:12px; }
+  label { display:block; font-size:12px; margin-bottom:6px; color:#141414; }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea, select, input[type="date"] {
+    width:90%; padding:10px 12px; border:1px solid #43454a; border-radius:3px; font-size:12px;
+  }
+  .field { margin-bottom:9px; }
+  .half { flex:1; }
+  .actions { display:flex; align-items:center; gap:10px; margin-top:12px; }
+  .btn { background:#2b6ef6; color:#b2aeae; border:0; padding:10px 16px; border-radius:6px; cursor:pointer; font-weight:600; }
+  .btn:disabled { background:#9fb7ff; cursor:not-allowed; }
+  .note { font-size:13px; color:#666; margin-top:8px; }
+  .error { color:#b00020; font-size:13px; display:none; margin-top:8px; }
+</style>
+</head>
+<body>
+  <form class="card" id="regForm" novalidate>
+    <h2>Create an Account</h2>
+
+    <div class="row">
+      <div class="field half">
+        <label for="firstName">Name</label>
+        <input id="firstName" name="firstName" type="text" required />
+      </div>
+
+      
+
+      <div class="field half">
+        <label for="Username">Username</label>
+        <input id="Username" name="Username" type="text" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" required />
+    </div>
+
+    <div class="row">
+      <div class="field half">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" minlength="8" required />
+        <div class="note">Minimum 8 characters.</div>
+      </div>
+      <div class="field half">
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="phone">Phone number</label>
+      <input id="phone" name="phone" type="tel" pattern="^\+?[0-9\s\-]{7,15}$" placeholder="+254712345678" required />
+    </div>
+
+    <div class="row">
+      <div class="field half">
+        <label for="dob">Date of birth</label>
+        <input id="dob" name="dob" type="date" required />
+      </div>
+      <div class="field half">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Prefer not to say</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label><input type="checkbox" id="terms" required /> I accept the <a href="#" target="_blank">terms & conditions</a></label>
+    </div>
+
+    <div class="actions">
+      <button class="btn" type="submit" id="submitBtn">Register</button>
+      <div id="formMsg" class="error" role="alert"></div>
+    </div>
+
+    
+  
+<script>
+  const form = document.getElementById('regForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+
+  function showError(msg) {
+    formMsg.textContent = msg;
+    formMsg.style.display = 'block';
+  }
+  function clearError() {
+    formMsg.textContent = '';
+    formMsg.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearError();
+
+    const pw = form.password.value.trim();
+    const cpw = form.confirmPassword.value.trim();
+    const email = form.email.value.trim();
+    const dob = form.dob.value;
+
+    // basic checks
+    if (pw !== cpw) { showError('Passwords do not match.'); return; }
+    if (pw.length < 8) { showError('Password must be at least 8 characters.'); return; }
+
+    // DOB simple check: user must be >= 13
+    if (dob) {
+      const age = Math.floor((Date.now() - new Date(dob)) / (1000*60*60*24*365.25));
+      if (age < 13) { showError('You must be at least 13 years old to register.'); return; }
+    }
+
+    // If all OK — simulate submit (replace with real POST in production)
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Registering...';
+
+    // Simulate server roundtrip
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register';
+      alert('Registration successful! (This is a demo — wire up to your backend.)');
+      form.reset();
+    }, 900);
+  });
+</script>
+</body>
+</html>
+</head>
+
+    
