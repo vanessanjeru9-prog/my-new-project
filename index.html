@@ -3,275 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Product table</title>
+    <title>Customer Registration</title>
     <style>
-        body { font-family: Arial, Helvetica, sans-serif; margin: 20px;background: #b9bcbe; color: rgb(112, 136, 136);;}
-        table { width:100%; border-collapse: collapse; background: #d2dde7; box-shadow: 0 2px 6px rgba(0,0,0,06);}
-         th, td { padding:10px 12px; border-bottom:1px solid #2d2c2c; vertical-align: top; text-align:left; }
-  thead th { background:#4a4848; font-weight:700; position: sticky; top:0; z-index:1; }
-  th { color:#7474f36b; }
-  tr:hover td { background: #bdc9b5; }
-  .icon { font-size:55px; width: 50px; text-align:center; }
-  .product-name { font-weight:800; margin-bottom:6px; display: block; }
-  .category { font-size:15px; color:#000000; margin-bottom:10px; display:block; }
-  .desc ul { margin:15px 0 0 20px; padding:1; }
-  /* responsive */
-  @media (max-width:800px){
-    table, thead, tbody, th, td, tr { display:block; }
-    thead { display:none; }
-    tr { margin-bottom:14px; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(106, 102, 102, 0.04); }
-    td { border:0; padding:10px; }
-    .row-label { font-weight:700; display:block; margin-bottom:6px; color:#1d1d1e; }
+  body { font-family: Arial, Helvetica, sans-serif; background:#bdd1e5; margin:0; padding:20px; display:flex; justify-content:center; }
+  .card { width:90%; max-width:520px; background:#f3ecec; padding:22px; box-shadow:0 6px 18px rgba(16, 16, 16, 0.06); border-radius:8px; }
+  h2 { margin-top:1; }
+  .row { display:flex; gap:12px; }
+  label { display:block; font-size:12px; margin-bottom:6px; color:#141414; }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea, select, input[type="date"] {
+    width:90%; padding:10px 12px; border:1px solid #43454a; border-radius:3px; font-size:12px;
   }
+  .field { margin-bottom:9px; }
+  .half { flex:1; }
+  .actions { display:flex; align-items:center; gap:10px; margin-top:12px; }
+  .btn { background:#2b6ef6; color:#b2aeae; border:0; padding:10px 16px; border-radius:6px; cursor:pointer; font-weight:600; }
+  .btn:disabled { background:#9fb7ff; cursor:not-allowed; }
+  .note { font-size:13px; color:#666; margin-top:8px; }
+  .error { color:#b00020; font-size:13px; display:none; margin-top:8px; }
 </style>
 </head>
 <body>
-<h2>E-commerce Product Table</h2>
-<table>
-  <thead> 
-    <tr>
-      <th>#</th>
-      <th>E commerce firm</th>
-      <th>Icon</th>
-      <th>Product name</th>
-      <th>Product category</th>
-      <th>Product description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- 15 rows -->
-    <tr>
-      <td>1</td>
-      <td>Fashion wear</td>
-      <td class="icon">🛍️</td>
-      <td><span class="product-name">Chrome hearts</span></td>
-      <td><span class="category">Fashion clothes</span></td>
-      <td class="desc">
-        <ul>
-          <li>100% cotton</li>
-          <li>Available S–XXL</li>
-          <li>Machine washable</li>
-          <li>Original wear</li>
-        </ul>
-      </td>
-    </tr>
+  <form class="card" id="regForm" novalidate>
+    <h2>Create an Account</h2>
 
-    <tr>
-      <td>2</td>
-      <td>Phone Hub</td>
-      <td class="icon">🔋</td>
-      <td><span class="product-name">Oraimo Powerbank</span></td>
-      <td><span class="category">Electronics</span></td>
-      <td class="desc">
-        <ul>
-          <li>2 USB-A + 1 USB-C</li>
-          <li>Supports PD fast charge</li>
-          <li>Long Lasting battery</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="row">
+      <div class="field half">
+        <label for="firstName">Name</label>
+        <input id="firstName" name="firstName" type="text" required />
+      </div>
 
-    <tr>
-      <td>3</td>
-      <td>Home Comfort</td>
-      <td class="icon">🏡</td>
-      <td><span class="product-name">Ceramic plates</span></td>
-      <td><span class="category">Home & Kitchen</span></td>
-      <td class="desc">
-        <ul>
-          <li>Made from China</li>
-          <li>Dishwasher safe</li>
-          <li>Marble finish</li>
-        </ul>
-      </td>
-    </tr>
+      
 
-    <tr>
-      <td>4</td>
-      <td>Style wear</td>
-      <td class="icon">👠</td>
-      <td><span class="product-name">Heels</span></td>
-      <td><span class="category">Footwear</span></td>
-      <td class="desc">
-        <ul>
-          <li>Made in China</li>
-          <li>Red bottomed</li>
-          <li>Sizes 35-45</li>
-        </ul>
-      </td>
-    </tr>
+      <div class="field half">
+        <label for="Username">Username</label>
+        <input id="Username" name="Username" type="text" required />
+      </div>
+    </div>
 
-    <tr>
-      <td>5</td>
-      <td>GadgetWorld</td>
-      <td class="icon">📱</td>
-      <td><span class="product-name">Apple</span></td>
-      <td><span class="category">Electronics</span></td>
-      <td class="desc">
-        <ul>
-          <li>Warranty of 2 years</li>
-          <li>Phone protector</li>
-          <li>Made in Carlifonia</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" required />
+    </div>
 
-    <tr>
-      <td>6</td>
-      <td>DairyFresh</td>
-      <td class="icon">🍐</td>
-      <td><span class="product-name">Chandaria fresh Fruits (500g)</span></td>
-      <td><span class="category">Groceries</span></td>
-      <td class="desc">
-        <ul>
-          <li>Store in a cool place</li>
-          <li>No preservatives</li>
-          <li>Packed same day</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="row">
+      <div class="field half">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" minlength="8" required />
+        <div class="note">Minimum 8 characters.</div>
+      </div>
+      <div class="field half">
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" required />
+      </div>
+    </div>
 
-    <tr>
-      <td>7</td>
-      <td>HappyPaws</td>
-      <td class="icon">🐾</td>
-      <td><span class="product-name">Happypaws Litter Box</span></td>
-      <td><span class="category">Pet Supplies</span></td>
-      <td class="desc">
-        <ul>
-          <li>Easy to clean</li>
-          <li>Odor-control filter</li>
-          <li>Long lasting material</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="field">
+      <label for="phone">Phone number</label>
+      <input id="phone" name="phone" type="tel" pattern="^\+?[0-9\s\-]{7,15}$" placeholder="+254712345678" required />
+    </div>
 
-    <tr>
-      <td>8</td>
-      <td>BeautyBox</td>
-      <td class="icon">💄</td>
-      <td><span class="product-name">Radiant Eye Ceramic</span></td>
-      <td><span class="category">Beauty</span></td>
-      <td class="desc">
-        <ul>
-          <li>Reduces dark circles</li>
-          <li>Removes impurities&oil</li>
-          <li>Opthalmologist tested</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="row">
+      <div class="field half">
+        <label for="dob">Date of birth</label>
+        <input id="dob" name="dob" type="date" required />
+      </div>
+      <div class="field half">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Prefer not to say</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
 
-    <tr>
-      <td>9</td>
-      <td>Printhub</td>
-      <td class="icon">🖨️</td>
-      <td><span class="product-name">Laser Jet Printer</span></td>
-      <td><span class="category">Office</span></td>
-      <td class="desc">
-        <ul>
-          <li>Fast printing speed</li>
-          <li>Wireless + Ethernet</li>
-          <li>Energy efficient</li>
-        </ul>
-      </td>
-    </tr>
 
-    <tr>
-      <td>10</td>
-      <td>BabyBloom</td>
-      <td class="icon">🍼</td>
-      <td><span class="product-name">Feeding Bottle Set</span></td>
-      <td><span class="category">Baby Care</span></td>
-      <td class="desc">
-        <ul>
-          <li>BPA-free plastic </li>
-          <li>Easy to clean</li>
-          <li>Anti-colic design</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="field">
+      <label><input type="checkbox" id="terms" required /> I accept the <a href="#" target="_blank">terms & conditions</a></label>
+    </div>
 
-    <tr>
-      <td>11</td>
-      <td>KidsCorner</td>
-      <td class="icon">🔖</td>
-      <td><span class="product-name">Alphabet Flashcards</span></td>
-      <td><span class="category">Learning</span></td>
-      <td class="desc">
-        <ul>
-          <li>Improves vocabulary</li>
-          <li>Durable cardboard</li>
-          <li>Put it away from kids under 3 years</li>
-        </ul>
-      </td>
-    </tr>
+    <div class="actions">
+      <button class="btn" type="submit" id="submitBtn">Register</button>
+      <div id="formMsg" class="error" role="alert"></div>
+    </div>
 
-    <tr>
-      <td>12</td>
-      <td>ExploreWorld</td>
-      <td class="icon">✈️</td>
-      <td><span class="product-name">BonfireAdventures</span></td>
-      <td><span class="category">Travel</span></td>
-      <td class="desc">
-        <ul>
-          <li>Very Affordable</li>
-          <li>Discounts accounted on special occassions</li>
-          <li>Comfortable</li>
-        </ul>
-      </td>
-    </tr>
-
-    <tr>
-      <td>13</td>
-      <td>FitTrack</td>
-      <td class="icon">🍶</td>
-      <td><span class="product-name">Protein Shaker bottle</span></td>
-      <td><span class="category">Fitness</span></td>
-      <td class="desc">
-        <ul>
-          <li>700ml capacity</li>
-          <li>Shake well before use</li>
-          <li>Leak-proof lid</li>
-        </ul>
-      </td>
-    </tr>
-
-    <tr>
-      <td>14</td>
-      <td>BrightReads</td>
-      <td class="icon">📔</td>
-      <td><span class="product-name">Science Encyclopedia</span></td>
-      <td><span class="category">Reference</span></td>
-      <td class="desc">
-        <ul>
-          <li>500+ pages, 2025 edition</li>
-          <li>Updated edition</li>
-          <li>Includes exercises</li>
-        </ul>
-      </td>
-    </tr>
-
-    <tr>
-      <td>15</td>
-      <td>Decorify</td>
-      <td class="icon">🪑</td>
-      <td><span class="product-name">Marble coffee table</span></td>
-      <td><span class="category">Furniture</span></td>
-      <td class="desc">
-        <ul>
-          <li>Nice set design</li>
-          <li>Smooth finish</li>
-          <li>Finished fine wood</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</body>
-</html>
-    </style>
-</head>
-<body>
     
+  
+<script>
+  const form = document.getElementById('regForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+
+  function showError(msg) {
+    formMsg.textContent = msg;
+    formMsg.style.display = 'block';
+  }
+  function clearError() {
+    formMsg.textContent = '';
+    formMsg.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearError();
+
+    const pw = form.password.value.trim();
+    const cpw = form.confirmPassword.value.trim();
+    const email = form.email.value.trim();
+    const dob = form.dob.value;
+
+    // basic checks
+    if (pw !== cpw) { showError('Passwords do not match.'); return; }
+    if (pw.length < 8) { showError('Password must be at least 8 characters.'); return; }
+
+    // DOB simple check: user must be >= 13
+    if (dob) {
+      const age = Math.floor((Date.now() - new Date(dob)) / (1000*60*60*24*365.25));
+      if (age < 13) { showError('You must be at least 13 years old to register.'); return; }
+    }
+
+    // If all OK — simulate submit (replace with real POST in production)
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Registering...';
+
+    // Simulate server roundtrip
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register';
+      alert('Registration successful! (This is a demo — wire up to your backend.)');
+      form.reset();
+    }, 900);
+  });
+</script>
 </body>
 </html>
+</head>
+
+    
